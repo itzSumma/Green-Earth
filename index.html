@@ -1,60 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Green-Earth</title>
-    <!-- DaisyUI-Tailwind -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
-    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-        rel="stylesheet">
-    <!-- All Styles Apply Here -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        * {
-            font-family: "Inter", sans-serif;
-        }
+        * { font-family: "Inter", sans-serif; }
     </style>
-
 </head>
 
 <body>
     <main class="container mx-auto text-center p-5">
         <h2 class="text-green-400 text-3xl font-bold">Choose Your Trees</h2>
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-8   ">
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+
             <!-- Categories -->
-            <div class="shadow-lg card-body mt-10       
-            col-span-3 md:col-span-4">
-                <h2 class=" text-2xl font-bold mb-3">Categories</h2>
+            <div class="shadow-lg card-body mt-10
+                        md:col-span-4
+                        lg:col-span-3">
+                <h2 class="text-2xl font-bold mb-3">Categories</h2>
                 <div>
                     <button id="all-tree-btn"
-                        class="btn btn-outline w-full min-h-14 rounded-md hover:bg-green-400 active:bg-green-400 text-xl font-medium mb-3">All
-                        Tress</button>
-                    <!-- Categories Container -->
-                    <div id="container-category" class="space-y-3">
-                        <!-- Categories will be dynamically loaded here -->
-                    </div>
-
+                        class="btn btn-outline w-full min-h-14 rounded-md hover:bg-green-400 active:bg-green-400 text-xl font-medium mb-3">
+                        All Trees
+                    </button>
+                    <div id="container-category" class="space-y-3"></div>
                 </div>
             </div>
 
-            <!-- Tress -->
-            <div id="tree" class="bg-amber-200 col-span-6">Tress</div>
-            <!-- Add Cart -->
+            <!-- Trees -->
+            <div id="tree-container" class="shadow-2xl card card-body
+                                            md:col-span-8
+                                            lg:col-span-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="card bg-base-100 shadow-sm">
+                        <figure>
+                            <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Tree" />
+                        </figure>
+                        <div class="card-body">
+                            <h2 class="card-title">Card Title</h2>
+                            <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+                            <div class="badge badge-success">Success</div>
+                            <div class="card-actions justify-between">
+                                <h2 class="text-2xl text-green-500 font-semibold">$500</h2>
+                                <button class="btn btn-success text-white rounded-2xl">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <div id="cart" class="bg-gray-400 col-span-3">Cart</div>
+            <!-- Cart -->
+            <div id="cart" class="bg-gray-400
+                                  md:col-span-12
+                                  lg:col-span-3">
+                Cart
+            </div>
+
         </div>
-
     </main>
-    ```
 
     <script src="script.js"></script>
 </body>
-
 </html>
