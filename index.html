@@ -1,36 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Green-Earth</title>
-          <!-- DaisyUI-Tailwind -->
-           <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- DaisyUI-Tailwind -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-            <!-- Google Font -->
-             <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-         <!-- All Styles Apply Here -->
-<style>
-*{  font-family: "Inter", sans-serif;
-}
-</style>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <!-- All Styles Apply Here -->
+    <style>
+        * {
+            font-family: "Inter", sans-serif;
+        }
+    </style>
 
 </head>
+
 <body>
-<main class="container mx-auto text-center p-5">
-    <h2 class="text-green-400 text-3xl font-bold">Choose Your Trees</h2>
-<div class="grid grid-cols-12 gap-10">
-<div id="categories" class="bg-gray-100 col-span-3 mt-12">Categories</div>
-<div id="tree" class="bg-amber-200 col-span-6">Tress</div>
-<div id="cart" class="bg-gray-400 col-span-3">Cart</div>
-</div>
+    <main class="container mx-auto text-center p-5">
+        <h2 class="text-green-400 text-3xl font-bold">Choose Your Trees</h2>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8   ">
+            <!-- Categories -->
+            <div class="shadow-lg card-body mt-10       
+            col-span-3 md:col-span-4">
+                <h2 class=" text-2xl font-bold mb-3">Categories</h2>
+                <div>
+                    <button id="all-tree-btn"
+                        class="btn btn-outline w-full min-h-14 rounded-md hover:bg-green-400 active:bg-green-400 text-xl font-medium mb-3">All
+                        Tress</button>
+                    <!-- Categories Container -->
+                    <div id="container-category" class="space-y-3">
+                        <!-- Categories will be dynamically loaded here -->
+                    </div>
 
-</main>
+                </div>
+            </div>
 
+            <!-- Tress -->
+            <div id="tree" class="bg-amber-200 col-span-6">Tress</div>
+            <!-- Add Cart -->
+
+            <div id="cart" class="bg-gray-400 col-span-3">Cart</div>
+        </div>
+
+    </main>
+    ```
 
     <script src="script.js"></script>
 </body>
+
 </html>
