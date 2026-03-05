@@ -18,8 +18,8 @@
 </head>
 
 <body>
-    <main class="container mx-auto text-center p-5">
-        <h2 class="text-green-400 text-3xl font-bold">Choose Your Trees</h2>
+    <main class="container mx-auto p-5">
+        <h2 class="text-green-500 text-4xl text-center font-bold mb-5">Choose Your Trees</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
 
@@ -30,7 +30,7 @@
                 <h2 class="text-2xl font-bold mb-3">Categories</h2>
                 <div>
                     <button id="all-tree-btn"
-                        class="btn btn-outline w-full min-h-14 rounded-md hover:bg-green-400 active:bg-green-400 text-xl font-medium mb-3">
+                        class="btn btn-success text-white w-full min-h-14 rounded-md hover:bg-green-400 active:bg-green-400 text-xl font-medium mb-3">
                         All Trees
                     </button>
                     <div id="container-category" class="space-y-3"></div>
@@ -38,25 +38,43 @@
             </div>
 
             <!-- Trees -->
-            <div id="tree-container" class="shadow-2xl card card-body
+            <!--
+                FIX: removed "card card-body" — DaisyUI sets display:flex on card-body
+                which overrides the inner CSS grid and stacks cards vertically.
+                Replaced with plain Tailwind: same visual (shadow + rounded + padding)
+                but no DaisyUI flex override.
+            -->
+            <div id="tree-container" class="shadow-2xl rounded-xl relative
                                             md:col-span-8
                                             lg:col-span-6">
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="card bg-base-100 shadow-sm">
+                <!--
+                    FIX: added id="cards-grid" so JS can target the INNER grid directly.
+                    appendChild() into this div → cards land inside columns → responsive 
+                -->
+                <div id="cards-grid" class="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- All card will dynamically appear here -->
+                            <!-- ////////////// -->
+                    <!-- <div class="card bg-base-100 shadow-sm">
                         <figure>
                             <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Tree" />
                         </figure>
                         <div class="card-body">
                             <h2 class="card-title">Card Title</h2>
-                            <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-                            <div class="badge badge-success">Success</div>
-                            <div class="card-actions justify-between">
-                                <h2 class="text-2xl text-green-500 font-semibold">$500</h2>
-                                <button class="btn btn-success text-white rounded-2xl">Buy Now</button>
+                            <p class="line-clamp-2">A card component has a figure, a body part, and inside body there are title and actions parts</p>
+                           <div class="badge badge-outline badge-success">Success</div>
+                            <div class="flex card-actions justify-between">
+                                <h2 class="text-2xl text-[#3caa62] font-bold">$500</h2>
+                                <button class="btn btn-success text-white rounded-xl">Buy Now</button>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
+
+
+                <!-- Loading spinner -->
+                 <div id="loading-spinner" class="h-[60vh] absolute inset-0 flex justify-center items-center hidden">
+                    <span class="loading loading-spinner loading-xl"></span>
+                 </div>
             </div>
 
             <!-- Cart -->
