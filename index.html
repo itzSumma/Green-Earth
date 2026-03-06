@@ -31,9 +31,7 @@
 <body>
     <main class="container mx-auto p-5">
         <h2 class="text-green-500 text-4xl text-center font-bold mb-5">Choose Your Trees</h2>
-
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-
             <!-- Categories -->
             <div class="shadow-2xl card-body mt-10
                         md:col-span-4
@@ -48,13 +46,11 @@
                     <div id="container-category" class="space-y-3"></div>
                 </div>
             </div>
-
             <!-- Trees -->
-           
             <div id="tree-container" class="shadow-2xl rounded-xl relative
                                             md:col-span-8
                                             lg:col-span-6">
-                
+
                 <div id="cards-grid" class="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- All card will dynamically appear here -->
                     <!-- ////////////// -->
@@ -80,24 +76,40 @@
                     <span class="loading loading-spinner loading-xl"></span>
                 </div>
             </div>
-
             <!-- Cart -->
-            <div id="cart" class="bg-gray-400
+            
+            <div id="cart" class="bg-white
                                   md:col-span-12
                                   lg:col-span-3">
-                Cart
+                <h2 class="font-bold text-3xl mb-3"><i class="fa-solid fa-cart-shopping"></i> Cart</h2>
+                <div class="space-y-3">
+
+                    <div class="space-y-4" id="cart-container" >
+                        <!-- cart item appear here -->
+                                           </div>
+
+                    <!-- total -->
+                    <div class="flex justify-between items-center bg-green-50 rounded-lg p-4 my-3 font-bold">
+                        <span>Total</span>
+                        <span>$ <span id="total-price">0</span></span>
+                    </div>
+
+                </div>
             </div>
         </div>
-<!-- Modal -->
- <!-- Open the modal using ID.showModal() method -->
-<button class="btn" onclick="tree-details.showModal()">open modal</button>
-<dialog id="tree-details" class="modal">
-  <div class="modal-box">
-  <!-- Modal Header with Close Button -->
+
+
+        <!-- Modal -->
+        <!-- Open the modal using ID.showModal() method -->
+        <button class="btn hidden" onclick="tree-details.showModal()">open modal</button>
+        <dialog id="tree-details" class="modal">
+            <div class="modal-box">
+                <!-- Modal Header with Close Button -->
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="font-bold text-2xl text-green-700" id="modalTitle">Tree Details</h3>
-                    <button class="btn btn-sm btn-circle btn-ghost"
-                        onclick="document.getElementById('tree-details-modal').close()">✕</button>
+                    <form method="dialog">
+                        <button class="btn btn-sm btn-circle btn-ghost">✕</button>
+                    </form>
                 </div>
 
                 <!-- Modal Content -->
@@ -119,17 +131,16 @@
                         </div>
                     </div>
                 </div>
-    <div class="modal-action">
-      <form method="dialog">
-        <!-- if there is a button in form, it will close the modal -->
-        <button class="btn">Close</button>
-      </form>
-    </div>
-  </div>
-</dialog>
-
+                <div class="modal-action">
+                    <form method="dialog">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
     </main>
-
+    <!-- JS File -->
     <script src="script.js"></script>
 </body>
 

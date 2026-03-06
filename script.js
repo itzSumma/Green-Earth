@@ -29,6 +29,9 @@ const modalImage = document.getElementById("modalImage");
 const modalCategory = document.getElementById("modalCategory");
 const modalDescription = document.getElementById("modalDescription");
 const modalPrice = document.getElementById("modalPrice");
+// empty array
+let cart =[];
+const cartContainer = document.getElementById("cart-container")
 //LEVEL-5 MODAL
 async function openModal(treeId) {
   console.log(treeId); /// see the id
@@ -37,13 +40,13 @@ async function openModal(treeId) {
   );
   const data = await res.json();
   const plant = data.plants;
-
+// console.log(plant,data)  // get id data on click
+console.log(plant,"data")
   modalTitle.textContent = plant.name;
   modalImage.src = plant.image;
   modalCategory.textContent = plant.category;
   modalDescription.textContent = plant.description;
   modalPrice.textContent = plant.price;
-
   treeDetailsModal.showModal();
 }
 // LEVEL-4 BUTTON RENDERING
@@ -97,7 +100,7 @@ async function loadTrees() {
 }
 // Display tree
 function displayTrees(trees) {
-  // cardsGrid.innerHTML = "";
+  cardsGrid.innerHTML = "";
   trees.forEach((tree) => {
     const card = document.createElement("div");
     card.className = "card bg-base-100 shadow-sm";
@@ -106,18 +109,74 @@ function displayTrees(trees) {
         <img src="${tree.image}" alt="${tree.name}" class="w-full h-48 object-cover cursor-pointer" onclick="openModal(${tree.id})" />
       </figure>
       <div class="card-body">
-        <h2 class="card-title" onclick="openModal(${tree.id})">${tree.name}</h2>
+        <h2 class="card-title cursor-pointer hover:text-red-500 active:text-red-500" onclick="openModal(${tree.id})">${tree.name}</h2>
         <p class="line-clamp-2">${tree.description}</p>
         <div class="badge badge-outline badge-success">${tree.category}</div>
         <div class="flex card-actions justify-between items-center mt-2">
           <h2 class="text-2xl text-[#3caa62] font-bold">$${tree.price}</h2>
-          <button class="btn btn-success text-white rounded-xl">Cart</button>
+          <button class="btn btn-success text-white rounded-xl" onclick="addToCart(${tree.id},'${tree.name}','${tree.price}','${tree.image}')">Cart</button>
         </div>
       </div>
-    `;
+    `; 
 
     cardsGrid.appendChild(card);
   });
+};
+// ADD CART SECTION
+//update array here
+ function addToCart(id,name,price,image){
+  console.log(id,name,price,"add to cart");
+  // remove duplicate with condition
+const existingItem = cart.find((item) => item.id === id);
+  if (existingItem) {
+    existingItem.quantity += 1; 
+  } 
+else{
+  cart.push({
+    id,name,price, image, quantity:1
+  });
 }
+  updateCart();
+}
+//  update cart by dom 
+function updateCart (){
+  cartContainer.innerHTML="";
+// calculate total here
+let total = 0; 
+  cart.forEach(item => {
+    total += Number(item.price) * item.quantity;
+
+// console.log(cart);
+
+  const cartItem =document.createElement("div");
+cartItem.className = "card card-body bg-slate-100 font-semibold"
+cartItem.innerHTML= `
+  <div class="flex justify-between items-center gap-3">
+    <img src="${item.image}" alt="${item.name}" class="w-14 h-14 rounded-lg object-cover flex-shrink-0" />
+    <div class="flex-1">
+      <h3 class="text-lg font-medium">${item.name}</h3>
+      <p>$${item.price} × ${item.quantity}</p>
+    </div>
+    <button class="btn btn-ghost"onclick="removeFromCart(${item.id})">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+  <p class="text-right font-bold text-xl">$${item.price * item.quantity}</p>
+`;
+                        
+cartContainer.appendChild(cartItem);
+})
+ document.getElementById("total-price").textContent = total; // ← total update
+}
+ 
+
+//  Remove from cart
+function removeFromCart(treeId) {
+console.log(treeId,"tree id");
+ cart = cart.filter((item)=> item.id !== treeId);
+ updateCart()
+};
+
+
 loadCategories();
 loadTrees();
