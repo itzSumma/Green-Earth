@@ -29,6 +29,7 @@ const modalImage = document.getElementById("modalImage");
 const modalCategory = document.getElementById("modalCategory");
 const modalDescription = document.getElementById("modalDescription");
 const modalPrice = document.getElementById("modalPrice");
+const emptyCart = document.getElementById("empty-cart");
 // empty array
 let cart =[];
 const cartContainer = document.getElementById("cart-container")
@@ -143,15 +144,22 @@ function updateCart (){
   cartContainer.innerHTML="";
 // calculate total here
 let total = 0; 
+// Add empty cart message
+if(cart.length === 0){
+  emptyCart.classList.remove("hidden")
+}else {
+  emptyCart.classList.add("hidden")
+}
+
   cart.forEach(item => {
     total += Number(item.price) * item.quantity;
 
 // console.log(cart);
 
   const cartItem =document.createElement("div");
-cartItem.className = "card card-body bg-slate-100 font-semibold"
+cartItem.className = "card card-body bg-slate-100 font-semibold gap-3"
 cartItem.innerHTML= `
-  <div class="flex justify-between items-center gap-3">
+  <div class="flex justify-between items-start gap-3">
     <img src="${item.image}" alt="${item.name}" class="w-14 h-14 rounded-lg object-cover flex-shrink-0" />
     <div class="flex-1">
       <h3 class="text-lg font-medium">${item.name}</h3>
@@ -180,3 +188,4 @@ console.log(treeId,"tree id");
 
 loadCategories();
 loadTrees();
+updateCart()
